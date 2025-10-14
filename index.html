@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسا مسا 👋</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-right: 4px solid #667eea;
+        }
+        
+        .demo-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 5px;
+            touch-action: manipulation;
+        }
+        
+        .btn:active {
+            transform: scale(0.95);
+        }
+        
+        .color-box {
+            width: 100%;
+            height: 100px;
+            background: #667eea;
+            border-radius: 8px;
+            transition: background 0.5s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        
+        .color-box:active {
+            transform: scale(0.98);
+        }
+        
+        .final-message {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(245, 87, 108, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(245, 87, 108, 0.6);
+            }
+        }
+        
+        .final-message h2 {
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .counter {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+        
+        .heart-box {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .heart {
+            font-size: 2em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            opacity: 0.3;
+            touch-action: manipulation;
+        }
+        
+        .heart:active {
+            transform: scale(1.3);
+        }
+        
+        .heart.active {
+            opacity: 1;
+            animation: heartbeat 0.5s;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        .slider-container {
+            margin-top: 15px;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            background: #ddd;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        
+        .mood-emoji {
+            font-size: 4em;
+            margin: 10px;
+        }
+        
+        .typing-demo {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: bold;
+            min-height: 30px;
+            border-right: 2px solid #667eea;
+            padding-left: 5px;
+            display: inline-block;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #667eea; }
+        }
+        
+        .card-flip {
+            width: 200px;
+            height: 250px;
+            margin: 15px auto;
+            perspective: 1000px;
+        }
+        
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            touch-action: manipulation;
+        }
+        
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .card-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .stars {
+            display: flex;
+            gap: 5px;
+            font-size: 2em;
+            margin-top: 10px;
+            justify-content: center;
+        }
+        
+        .star {
+            cursor: pointer;
+            transition: transform 0.2s;
+            opacity: 0.3;
+            touch-action: manipulation;
+        }
+        
+        .star:active {
+            transform: scale(1.2);
+        }
+        
+        .star.active {
+            opacity: 1;
+        }
+
+        .grid-box {
+            width: 100%;
+            height: 50px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .grid-box:active {
+            transform: scale(0.9);
+        }
+
+        .dice-emoji {
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+
+        .dice-emoji.rolling {
+            animation: roll 0.5s ease-out;
+        }
+
+        @keyframes roll {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(720deg); }
+        }
+
+        .note-btn {
+            transition: all 0.2s;
+        }
+
+        .note-btn:active {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .memory-box {
+            width: 100%;
+            height: 80px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .memory-box.flash {
+            background: #4ECDC4 !important;
+            transform: scale(1.1);
+        }
+
+        .memory-box.correct {
+            background: #96CEB4 !important;
+        }
+
+        .memory-box.wrong {
+            background: #FF6B6B !important;
+        }
+
+        #drawCanvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pet-emoji {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .pet-emoji.happy {
+            animation: jump 0.5s;
+        }
+
+        @keyframes jump {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مسا مسا! <span class="emoji">👋</span></h1>
+        <p class="subtitle">إيه الأخبار؟ خليني أعرفك أنا بشتغل إيه...</p>
+        
+        <div class="section">
+            <h2>💻 أنا Web Developer</h2>
+            <p>يعني باختصر كده... أنا اللي بعمل المواقع والتطبيقات اللي بتستخدميها كل يوم!</p>
+            <div style="margin-top: 15px;">
+                <span class="skill-tag">مواقع تفاعلية</span>
+                <span class="skill-tag">تصميم عصري</span>
+                <span class="skill-tag">تجربة مميزة</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⌨️ مثلاً الكتابة التلقائية دي</h2>
+            <div class="demo-box">
+                <div class="typing-demo" id="typing"></div>
+                <br><br>
+                <button class="btn" onclick="startTyping()">شغليها تاني</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔘 أو الزرار البسيط ده</h2>
+            <p>جربي تدوسي عليه:</p>
+            <div class="demo-box">
+                <button class="btn" onclick="changeText()">اضغطي هنا</button>
+                <p id="demo-text" style="margin-top: 15px; color: #667eea; font-weight: bold;"></p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎨 أو الألوان المتغيرة</h2>
+            <p>دوسي على المربع:</p>
+            <div class="demo-box">
+                <div class="color-box" onclick="changeColor()">
+                    اضغطي هنا!
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💝 أو نظام التقييم بالقلوب</h2>
+            <p>دوسي على القلوب:</p>
+            <div class="demo-box">
+                <div class="heart-box" id="hearts">
+                    <span class="heart" onclick="rateHearts(1)">❤️</span>
+                    <span class="heart" onclick="rateHearts(2)">❤️</span>
+                    <span class="heart" onclick="rateHearts(3)">❤️</span>
+                    <span class="heart" onclick="rateHearts(4)">❤️</span>
+                    <span class="heart" onclick="rateHearts(5)">❤️</span>
+                </div>
+                <p id="heart-text" style="margin-top: 15px; color: #f5576c; font-weight: bold;"></p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>😊 أو السلايدر التفاعلي</h2>
+            <p>حركي السلايدر شوفي إيه هيحصل:</p>
+            <div class="demo-box">
+                <div class="mood-emoji" id="mood">😊</div>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="moodSlider" oninput="changeMood(this.value)">
+                </div>
+                <p id="mood-text" style="margin-top: 15px; color: #667eea;">مبسوط! 😊</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎴 أو الكارت اللي بيلف</h2>
+            <p>دوسي على الكارت:</p>
+            <div class="card-flip">
+                <div class="card-inner" id="flipCard" onclick="flipTheCard()">
+                    <div class="card-front">
+                        <h3>💻</h3>
+                        <h3>Web Developer</h3>
+                        <p>اضغطي هنا</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>✨</h3>
+                        <h3>بحول الأفكار</h3>
+                        <p>لمواقع حقيقية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⭐ أو التقييم بالنجوم</h2>
+            <div class="demo-box">
+                <p>قيمي الشغل:</p>
+                <div class="stars" id="stars">
+                    <span class="star" onclick="rateStars(1)">⭐</span>
+                    <span class="star" onclick="rateStars(2)">⭐</span>
+                    <span class="star" onclick="rateStars(3)">⭐</span>
+                    <span class="star" onclick="rateStars(4)">⭐</span>
+                    <span class="star" onclick="rateStars(5)">⭐</span>
+                </div>
+                <p id="star-text" style="margin-top: 15px; color: #667eea; font-weight: bold;"></p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔢 أو العداد ده</h2>
+            <div class="demo-box">
+                <div class="counter" id="counter">0</div>
+                <button class="btn" onclick="incrementCounter()">+</button>
+                <button class="btn" onclick="decrementCounter()">-</button>
+                <button class="btn" onclick="resetCounter()">صفر</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 أو لعبة الضربات</h2>
+            <p>كام مرة تقدري تدوسي في 5 ثواني؟</p>
+            <div class="demo-box">
+                <div style="font-size: 2em; margin: 15px 0;" id="clickScore">0</div>
+                <button class="btn" id="clickGameBtn" onclick="startClickGame()">ابدأي اللعبة!</button>
+                <p id="clickGameResult" style="margin-top: 10px; color: #667eea; font-weight: bold;"></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎨 أو الرسم بالألوان</h2>
+            <p>دوسي على المربعات وغيري لونها:</p>
+            <div class="demo-box">
+                <div id="colorGrid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 15px;"></div>
+                <button class="btn" onclick="resetGrid()" style="margin-top: 15px;">امسحي الكل</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎲 أو رمي الزهر</h2>
+            <p>دوسي على الزرار وشوفي حظك:</p>
+            <div class="demo-box">
+                <div style="font-size: 5em; margin: 15px 0;" id="dice">🎲</div>
+                <button class="btn" onclick="rollDice()">ارميها!</button>
+                <p id="diceResult" style="margin-top: 10px; color: #667eea; font-weight: bold;"></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎵 أو الأصوات التفاعلية</h2>
+            <p>دوسي على الأزرار واسمعي الأصوات:</p>
+            <div class="demo-box">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                    <button class="btn" onclick="playNote('C')" style="background: #FF6B6B;">دو</button>
+                    <button class="btn" onclick="playNote('D')" style="background: #4ECDC4;">ري</button>
+                    <button class="btn" onclick="playNote('E')" style="background: #45B7D1;">مي</button>
+                    <button class="btn" onclick="playNote('F')" style="background: #96CEB4;">فا</button>
+                    <button class="btn" onclick="playNote('G')" style="background: #FFEAA7;">صول</button>
+                    <button class="btn" onclick="playNote('A')" style="background: #DFE6E9;">لا</button>
+                </div>
+                <p style="margin-top: 15px; color: #667eea;">🎹 عزفي لحن!</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💬 أو رسائل عشوائية</h2>
+            <p>دوسي واستلمي رسالة:</p>
+            <div class="demo-box">
+                <div style="min-height: 60px; padding: 15px; background: #f8f9fa; border-radius: 8px; margin: 15px 0;">
+                    <p id="randomMessage" style="color: #667eea; font-size: 1.1em; font-weight: bold;">دوسي على الزرار!</p>
+                </div>
+                <button class="btn" onclick="showRandomMessage()">رسالة جديدة</button>
+            </div>
+        </div>
+
+       
+
+        <div class="section">
+            <h2>🎨 أو الرسام الذكي</h2>
+            <p>ارسمي بإيدك على الشاشة:</p>
+            <div class="demo-box">
+                <canvas id="drawCanvas" width="300" height="300" style="border: 2px solid #667eea; border-radius: 8px; cursor: crosshair; touch-action: none;"></canvas>
+                <div style="margin-top: 10px;">
+                    <button class="btn" onclick="changeDrawColor('#FF6B6B')">🔴</button>
+                    <button class="btn" onclick="changeDrawColor('#4ECDC4')">🟢</button>
+                    <button class="btn" onclick="changeDrawColor('#45B7D1')">🔵</button>
+                    <button class="btn" onclick="changeDrawColor('#FFEAA7')">🟡</button>
+                    <button class="btn" onclick="clearCanvas()">امسحي</button>
+                </div>
+            </div>
+        </div>
+
+       
+
+   
+
+        <div class="section">
+            <h2>🐱 أو لعبة الحيوان الأليف</h2>
+            <p>خلي بالك من الحيوان بتاعك:</p>
+            <div class="demo-box">
+                <div style="font-size: 5em; margin: 15px 0;" id="pet">🐱</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin: 10px 0;">
+                    <div style="background: #4ECDC4; padding: 10px; border-radius: 8px;">
+                        <div>❤️</div>
+                        <div id="petLove" style="font-weight: bold;">100</div>
+                    </div>
+                    <div style="background: #FFEAA7; padding: 10px; border-radius: 8px;">
+                        <div>🍖</div>
+                        <div id="petHunger" style="font-weight: bold;">100</div>
+                    </div>
+                    <div style="background: #96CEB4; padding: 10px; border-radius: 8px;">
+                        <div>😊</div>
+                        <div id="petHappy" style="font-weight: bold;">100</div>
+                    </div>
+                </div>
+                <button class="btn" onclick="feedPet()">🍖 طعمي</button>
+                <button class="btn" onclick="lovePet()">❤️ حبي</button>
+                <button class="btn" onclick="playWithPet()">🎾 العبي</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎲 أو لعبة التخمين</h2>
+            <p>خمني الرقم من 1 لـ 10:</p>
+            <div class="demo-box">
+                <input type="number" id="guessInput" min="1" max="10" placeholder="اكتبي رقم" style="padding: 10px; font-size: 1.1em; border: 2px solid #667eea; border-radius: 8px; width: 150px; text-align: center;">
+                <button class="btn" onclick="checkGuess()">خمني!</button>
+                <p id="guessResult" style="margin-top: 10px; color: #667eea; font-weight: bold;"></p>
+                <p id="guessAttempts" style="margin-top: 5px; color: #999;"></p>
+            </div>
+        </div>
+        
+        <div class="final-message">
+            <h2>ف... إيه رأيك؟ 🤔</h2>
+            <p style="font-size: 1.1em; margin-top: 15px; line-height: 1.6;">
+                بصراحة انا مبسوط اني شوفتك تاني وكدة  
+            </p>
+              <p style="margin-top: 25px; font-size: 1.15em; line-height: 1.6;">
+                المهم بقا يعني لو... ممكن تديني فرصة كده؟ 😊<br>
+                نتكلم أكتر ونتعرف... ومش هتندمي علفكرة
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Messages for button click
+        const messages = [
+            "شايفة؟ ده أنا اللي عملته! 😊",
+            "كل الحركات دي بكود كتبته 💻",
+            "وده جزء بسيط من اللي بعمله! ✨",
+            "حلو، صح؟ 🌟"
+        ];
+        let messageIndex = 0;
+        
+        function changeText() {
+            document.getElementById('demo-text').textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+        
+        // Color changing
+        const colors = ['#667eea', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#ff6b6b'];
+        let colorIndex = 0;
+        
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            document.querySelector('.color-box').style.background = colors[colorIndex];
+        }
+        
+        // Counter
+        let count = 0;
+        
+        function incrementCounter() {
+            count++;
+            document.getElementById('counter').textContent = count;
+        }
+        
+        function decrementCounter() {
+            count--;
+            document.getElementById('counter').textContent = count;
+        }
+        
+        function resetCounter() {
+            count = 0;
+            document.getElementById('counter').textContent = count;
+        }
+        
+        // Hearts rating
+        function rateHearts(rating) {
+            const hearts = document.querySelectorAll('.heart');
+            const heartText = document.getElementById('heart-text');
+            const messages = [
+                '',
+                'شكراً! 💝',
+                'حلو أوي! ❤️❤️',
+                'جميل جداً! 💕💕💕',
+                'رووووعة! ❤️❤️❤️❤️',
+                'ده أكتر من رائع! 💝💝💝💝💝'
+            ];
+            
+            hearts.forEach((heart, index) => {
+                if (index < rating) {
+                    heart.classList.add('active');
+                } else {
+                    heart.classList.remove('active');
+                }
+            });
+            
+            heartText.textContent = messages[rating];
+        }
+        
+        // Mood slider
+        function changeMood(value) {
+            const moods = ['😢', '😕', '😊', '😃', '🥰'];
+            const moodTexts = ['مش تمام', 'عادي', 'مبسوط!', 'فرحان!', 'سعيد جداً! 💕'];
+            const moodEmoji = document.getElementById('mood');
+            const moodText = document.getElementById('mood-text');
+            
+            moodEmoji.textContent = moods[value - 1];
+            moodText.textContent = moodTexts[value - 1];
+        }
+        
+        // Stars rating
+        function rateStars(rating) {
+            const stars = document.querySelectorAll('.star');
+            const starText = document.getElementById('star-text');
+            const messages = [
+                '',
+                'تمام، شكراً! 😊',
+                'حلو! ⭐⭐',
+                'جميل! ⭐⭐⭐',
+                'ممتاز! ⭐⭐⭐⭐',
+                'خيال! ⭐⭐⭐⭐⭐'
+            ];
+            
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            
+            starText.textContent = messages[rating];
+        }
+        
+        // Card flip
+        function flipTheCard() {
+            const card = document.getElementById('flipCard');
+            card.classList.toggle('flipped');
+        }
+        
+        // Typing effect
+        const typingText = "أهلاً بيكي في عالمي! 👋✨";
+        let charIndex = 0;
+        let typingInterval;
+        
+        function typeWriter() {
+            const typingElement = document.getElementById('typing');
+            if (charIndex < typingText.length) {
+                typingElement.textContent = typingText.substring(0, charIndex + 1);
+                charIndex++;
+            } else {
+                clearInterval(typingInterval);
+            }
+        }
+        
+        function startTyping() {
+            clearInterval(typingInterval);
+            charIndex = 0;
+            document.getElementById('typing').textContent = '';
+            typingInterval = setInterval(typeWriter, 100);
+        }
+        
+        // Start typing on page load
+        window.onload = function() {
+            startTyping();
+            createColorGrid();
+            setupCanvas();
+            startGuessingGame();
+            startPetGame();
+        };
+
+        // Click Game
+        let clickCount = 0;
+        let gameActive = false;
+        let gameTimer;
+
+        function startClickGame() {
+            if (gameActive) return;
+            
+            clickCount = 0;
+            gameActive = true;
+            document.getElementById('clickScore').textContent = '0';
+            document.getElementById('clickGameResult').textContent = 'دوسي بسرعة! ⚡';
+            document.getElementById('clickGameBtn').textContent = 'دوسي! دوسي!';
+            document.getElementById('clickGameBtn').onclick = function() {
+                if (gameActive) {
+                    clickCount++;
+                    document.getElementById('clickScore').textContent = clickCount;
+                }
+            };
+
+            gameTimer = setTimeout(function() {
+                gameActive = false;
+                let result = '';
+                if (clickCount < 10) result = 'مش بطال! 😊';
+                else if (clickCount < 20) result = 'حلو أوي! 🔥';
+                else if (clickCount < 30) result = 'ممتاز! ⭐';
+                else result = 'يا خبر! سرعة البرق! ⚡⚡';
+                
+                document.getElementById('clickGameResult').textContent = `${clickCount} ضربة! ${result}`;
+                document.getElementById('clickGameBtn').textContent = 'العب تاني';
+                document.getElementById('clickGameBtn').onclick = startClickGame;
+            }, 5000);
+        }
+
+        // Color Grid
+        function createColorGrid() {
+            const grid = document.getElementById('colorGrid');
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DFE6E9', '#667eea', '#f093fb'];
+            
+            for (let i = 0; i < 20; i++) {
+                const box = document.createElement('div');
+                box.className = 'grid-box';
+                box.onclick = function() {
+                    this.style.background = colors[Math.floor(Math.random() * colors.length)];
+                };
+                grid.appendChild(box);
+            }
+        }
+
+        function resetGrid() {
+            const boxes = document.querySelectorAll('.grid-box');
+            boxes.forEach(box => {
+                box.style.background = '#e0e0e0';
+            });
+        }
+
+        // Dice Roll
+        const diceEmojis = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+        function rollDice() {
+            const diceElement = document.getElementById('dice');
+            diceElement.classList.add('rolling');
+            
+            let rolls = 0;
+            const rollInterval = setInterval(() => {
+                diceElement.textContent = diceEmojis[Math.floor(Math.random() * 6)];
+                rolls++;
+                if (rolls > 10) {
+                    clearInterval(rollInterval);
+                    const finalRoll = Math.floor(Math.random() * 6) + 1;
+                    diceElement.textContent = diceEmojis[finalRoll - 1];
+                    diceElement.classList.remove('rolling');
+                    
+                    let message = '';
+                    if (finalRoll === 6) message = 'يا سلام! 6! 🎉';
+                    else if (finalRoll === 1) message = 'ياااه 1! 😅';
+                    else if (finalRoll >= 4) message = `رقم حلو! ${finalRoll} 😊`;
+                    else message = `طلع ${finalRoll}`;
+                    
+                    document.getElementById('diceResult').textContent = message;
+                }
+            }, 100);
+        }
+
+        // Musical Notes
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = {
+            'C': 261.63,
+            'D': 293.66,
+            'E': 329.63,
+            'F': 349.23,
+            'G': 392.00,
+            'A': 440.00
+        };
+
+        function playNote(note) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = notes[note];
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        // Random Messages
+        const randomMessages = [
+            "أنتي شخص مميز! ✨",
+            "النهاردة يوم جميل! 🌟",
+            "ابتسامتك حلوة! 😊",
+          
+
+        ];
+
+        function showRandomMessage() {
+            const message = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+            document.getElementById('randomMessage').textContent = message;
+        }
+
+        // Memory Game
+        let memorySequence = [];
+        let playerSequence = [];
+        let memoryLevel = 1;
+        let memoryBoxes = [];
+
+        function createMemoryGrid() {
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            memoryBoxes = [];
+            
+            for (let i = 0; i < 9; i++) {
+                const box = document.createElement('div');
+                box.className = 'memory-box';
+                box.onclick = () => memoryBoxClick(i);
+                grid.appendChild(box);
+                memoryBoxes.push(box);
+            }
+        }
+
+        function startMemoryGame() {
+            createMemoryGrid();
+            memorySequence = [];
+            playerSequence = [];
+            memoryLevel = 1;
+            document.getElementById('memoryResult').textContent = 'اتفرجي كويس...';
+            
+            setTimeout(() => {
+                addMemoryStep();
+            }, 1000);
+        }
+
+        function addMemoryStep() {
+            const randomBox = Math.floor(Math.random() * 9);
+            memorySequence.push(randomBox);
+            playMemorySequence();
+        }
+
+        function playMemorySequence() {
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < memorySequence.length) {
+                    memoryBoxes[memorySequence[i]].classList.add('flash');
+                    setTimeout(() => {
+                        memoryBoxes[memorySequence[i]].classList.remove('flash');
+                    }, 400);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById('memoryResult').textContent = 'دورك! كرري الترتيب';
+                }
+            }, 600);
+        }
+
+        function memoryBoxClick(index) {
+            if (playerSequence.length >= memorySequence.length) return;
+            
+            playerSequence.push(index);
+            memoryBoxes[index].classList.add('flash');
+            setTimeout(() => memoryBoxes[index].classList.remove('flash'), 200);
+            
+            if (playerSequence[playerSequence.length - 1] !== memorySequence[playerSequence.length - 1]) {
+                document.getElementById('memoryResult').textContent = '❌ غلط! حاولي تاني';
+                memoryBoxes[index].classList.add('wrong');
+                setTimeout(() => memoryBoxes[index].classList.remove('wrong'), 500);
+                return;
+            }
+            
+            if (playerSequence.length === memorySequence.length) {
+                document.getElementById('memoryResult').textContent = `✅ مظبوط! المستوى ${memoryLevel}`;
+                memoryLevel++;
+                playerSequence = [];
+                setTimeout(() => {
+                    addMemoryStep();
+                }, 1500);
+            }
+        }
+
+        // Drawing Canvas
+        const canvas = document.getElementById('drawCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentColor = '#667eea';
+        let lastX = 0;
+        let lastY = 0;
+
+        function setupCanvas() {
+            canvas.width = 300;
+            canvas.height = 300;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = currentColor;
+        }
+
+        function getPosition(e) {
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches ? e.touches[0] : e;
+            return {
+                x: (touch.clientX - rect.left) * (canvas.width / rect.width),
+                y: (touch.clientY - rect.top) * (canvas.height / rect.height)
+            };
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const pos = getPosition(e);
+            lastX = pos.x;
+            lastY = pos.y;
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isDrawing = true;
+            const pos = getPosition(e);
+            lastX = pos.x;
+            lastY = pos.y;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const pos = getPosition(e);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            lastX = pos.x;
+            lastY = pos.y;
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (!isDrawing) return;
+            const pos = getPosition(e);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            lastX = pos.x;
+            lastY = pos.y;
+        });
+
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('touchend', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+
+        function changeDrawColor(color) {
+            currentColor = color;
+            ctx.strokeStyle = color;
+        }
+
+        function clearCanvas() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Slot Machine
+        const slotSymbols = ['🍒', '🍋', '🍊', '🍇', '🍉', '⭐', '💎'];
+
+        function spinSlots() {
+            const btn = event.target;
+            btn.disabled = true;
+            document.getElementById('slotResult').textContent = '...';
+            
+            let spins = 0;
+            const spinInterval = setInterval(() => {
+                document.getElementById('slot1').textContent = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+                document.getElementById('slot2').textContent = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+                document.getElementById('slot3').textContent = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+                spins++;
+                
+                if (spins > 20) {
+                    clearInterval(spinInterval);
+                    const s1 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+                    const s2 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+                    const s3 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+                    
+                    document.getElementById('slot1').textContent = s1;
+                    document.getElementById('slot2').textContent = s2;
+                    document.getElementById('slot3').textContent = s3;
+                    
+                    if (s1 === s2 && s2 === s3) {
+                        document.getElementById('slotResult').textContent = '🎉 جاااااكبوت! 🎉';
+                    } else if (s1 === s2 || s2 === s3 || s1 === s3) {
+                        document.getElementById('slotResult').textContent = '😊 كسبتي! مبروك!';
+                    } else {
+                        document.getElementById('slotResult').textContent = '😅 حاولي تاني!';
+                    }
+                    btn.disabled = false;
+                }
+            }, 100);
+        }
+
+        // Wheel Spin
+        const prizes = ['🎁 هدية!', '⭐ نجمة!', '💎 ماسة!', '🎈 بالون!', '🌟 كأس!', '🎊 مفاجأة!'];
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            const rotation = 3600 + Math.floor(Math.random() * 360);
+            wheel.style.transform = `rotate(${rotation}deg)`;
+            document.getElementById('wheelResult').textContent = '...';
+            
+            setTimeout(() => {
+                const prize = prizes[Math.floor(Math.random() * prizes.length)];
+                document.getElementById('wheelResult').textContent = `كسبتي: ${prize}`;
+            }, 3000);
+        }
+
+        // Pet Game
+        let petStats = { love: 100, hunger: 100, happy: 100 };
+        let petInterval;
+
+        function startPetGame() {
+            petInterval = setInterval(() => {
+                petStats.love = Math.max(0, petStats.love - 1);
+                petStats.hunger = Math.max(0, petStats.hunger - 2);
+                petStats.happy = Math.max(0, petStats.happy - 1);
+                updatePetStats();
+                updatePetEmoji();
+            }, 2000);
+        }
+
+        function updatePetStats() {
+            document.getElementById('petLove').textContent = petStats.love;
+            document.getElementById('petHunger').textContent = petStats.hunger;
+            document.getElementById('petHappy').textContent = petStats.happy;
+        }
+
+        function updatePetEmoji() {
+            const pet = document.getElementById('pet');
+            const avg = (petStats.love + petStats.hunger + petStats.happy) / 3;
+            
+            if (avg > 70) pet.textContent = '🐱';
+            else if (avg > 40) pet.textContent = '😺';
+            else if (avg > 20) pet.textContent = '😿';
+            else pet.textContent = '💀';
+        }
+
+        function feedPet() {
+            petStats.hunger = Math.min(100, petStats.hunger + 30);
+            updatePetStats();
+            animatePet();
+        }
+
+        function lovePet() {
+            petStats.love = Math.min(100, petStats.love + 30);
+            updatePetStats();
+            animatePet();
+        }
+
+        function playWithPet() {
+            petStats.happy = Math.min(100, petStats.happy + 30);
+            updatePetStats();
+            animatePet();
+        }
+
+        function animatePet() {
+            const pet = document.getElementById('pet');
+            pet.classList.add('pet-emoji');
+            pet.classList.add('happy');
+            setTimeout(() => pet.classList.remove('happy'), 500);
+        }
+
+        // Guessing Game
+        let secretNumber = 0;
+        let guessAttempts = 0;
+
+        function startGuessingGame() {
+            secretNumber = Math.floor(Math.random() * 10) + 1;
+            guessAttempts = 0;
+            document.getElementById('guessResult').textContent = '';
+            document.getElementById('guessAttempts').textContent = '';
+        }
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById('guessInput').value);
+            if (!guess || guess < 1 || guess > 10) {
+                document.getElementById('guessResult').textContent = 'اكتبي رقم من 1 لـ 10!';
+                return;
+            }
+            
+            guessAttempts++;
+            
+            if (guess === secretNumber) {
+                document.getElementById('guessResult').textContent = `🎉 مبروك! خمنتي صح في ${guessAttempts} محاولة!`;
+                document.getElementById('guessAttempts').textContent = '';
+                setTimeout(startGuessingGame, 2000);
+            } else if (guess < secretNumber) {
+                document.getElementById('guessResult').textContent = '⬆️ الرقم أكبر!';
+                document.getElementById('guessAttempts').textContent = `المحاولات: ${guessAttempts}`;
+            } else {
+                document.getElementById('guessResult').textContent = '⬇️ الرقم أصغر!';
+                document.getElementById('guessAttempts').textContent = `المحاولات: ${guessAttempts}`;
+            }
+            
+            document.getElementById('guessInput').value = '';
+        }
+    </script>
+</body>
+</html>
