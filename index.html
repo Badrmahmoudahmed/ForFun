@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مسا مسا 👋</title>
+    <title>ايه الاخبار 👋</title>
     <style>
         * {
             margin: 0;
@@ -183,10 +183,51 @@
             opacity: 1;
             animation: heartbeat 0.5s;
         }
+
+        .quiz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in;
+            text-align: center;
+        }
+
+         .emoji-large {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+         .question {
+            font-size: 1.3em;
+            color: #333;
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+
+        .error-message {
+            color: #f5576c;
+            font-weight: bold;
+            margin-top: 15px;
+            min-height: 25px;
+            animation: fadeIn 0.3s;
+        }
+        .hint {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
         
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.3); }
+        }
+
+        .quiz-container.shake {
+            animation: shake 0.5s;
         }
         
         .slider-container {
@@ -385,10 +426,47 @@
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
         }
+        .main-content {
+            display: none;
+        }
+        
+        .main-content.show {
+            display: block;
+        }
+
+                input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="quiz-container" id="quizContainer">
+        <h1>سؤال سريع! 🤔</h1>
+        <div class="emoji-large">🌊</div>
+        <div class="question">
+            من يسكن البحر ويحبه الناس؟
+        </div>
+        <input type="text" id="answerInput" placeholder="اكتبي الإجابة هنا..." autocomplete="off">
+        <button class="btn"  id="answerbtn">تحقق من الإجابة</button>
+        <div class="error-message" id="errorMessage"></div>
+        <div class="hint">💡 تلميح: شخصية كرتونية مشهورة اسمها 4 كلمات</div>
+    </div>
+
+    <div class="container main-content" id="mainContent">
         <h1>مسا مسا! <span class="emoji">👋</span></h1>
         <p class="subtitle">إيه الأخبار؟ خليني أعرفك أنا بشتغل إيه...</p>
         
@@ -627,6 +705,81 @@
     </div>
     
     <script>
+
+        let attempts = 0;
+        const correctAnswers = [
+            'سبونج بوب سكوير بانتس',
+            'سبونج بوب',
+            'اسفنج بوب',
+            'اسفنج بوب سكوير بانتس',
+            'سبونج بوب سكوير بانس',
+            'اسفنجة بوب'
+        ];
+
+        function checkAnswer() {
+            console.log("hello");
+            const input = document.getElementById('answerInput');
+            const answer = input.value.trim().toLowerCase();
+            const errorMsg = document.getElementById('errorMessage');
+            const container = document.getElementById('quizContainer');
+            
+            attempts++;
+            
+            const isCorrect = correctAnswers.some(correct => 
+                answer.includes(correct.toLowerCase())
+            );
+            
+            if (isCorrect) {
+                errorMsg.style.color = '#43e97b';
+                errorMsg.textContent = '🎉 برافو! إجابة صحيحة!';
+                
+                setTimeout(() => {
+                    document.getElementById('quizContainer').style.display = 'none';
+                    document.getElementById('mainContent').classList.add('show');
+                    document.body.style.overflow = 'auto';
+                    setupMainPage();
+                }, 1500);
+            } else {
+                container.classList.add('shake');
+                setTimeout(() => container.classList.remove('shake'), 500);
+                
+                if (attempts === 1) {
+                    errorMsg.textContent = '❌ غلط! حاولي تاني... فكري كويس! 🤔';
+                } else if (attempts === 2) {
+                    errorMsg.textContent = '❌ لأ برضو! تلميح: اسمه فيه "سبونج" 🧽';
+                } else {
+                    errorMsg.textContent = '❌ حاولي تاني! اسمه 3 كلمات وبيعيش في قاع الهامور 🏖️';
+                }
+            }
+            
+            input.value = '';
+            input.focus();
+        }
+
+        document.getElementById('answerInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+         document.getElementById('answerbtn').addEventListener('click', function(e) {
+            
+                checkAnswer();
+            
+        });
+
+        window.onload = function() {
+            document.getElementById('answerInput').focus();
+        };
+
+        function setupMainPage() {
+            createColorGrid();
+            setupCanvas();
+            startPetGame();
+        }
+
+
+
+
         // Messages for button click
         const messages = [
             "شايفة؟ ده أنا اللي عملته! 😊",
@@ -756,14 +909,7 @@
         }
         
         // Start typing on page load
-        window.onload = function() {
-            //startTyping();
-            createColorGrid();
-            setupCanvas();
-            startPetGame();
-            //startGuessingGame();
-            
-        };
+        
 
         // Click Game
         let clickCount = 0;
