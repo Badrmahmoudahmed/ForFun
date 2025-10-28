@@ -9,6 +9,18 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            .lucky-heart {
+                padding: 20px;
+                min-height: 80px;
+            }
+            
+            .heart-front {
+                font-size: 2.5em;
+            }
+            
+            .heart-back {
+                font-size: 0.95em;
+            }
         }
 
         body {
@@ -256,6 +268,50 @@
             font-weight: bold;
         }
 
+        .lucky-heart {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lucky-heart:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.5);
+        }
+
+        .lucky-heart.revealed {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
+            cursor: default;
+        }
+
+        .heart-front {
+            font-size: 3em;
+            transition: all 0.3s ease;
+        }
+
+        .lucky-heart.revealed .heart-front {
+            display: none;
+        }
+
+        .heart-back {
+            display: none;
+            font-size: 1.2em;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lucky-heart.revealed .heart-back {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .pineapple { font-size: 3.5em; }
             
@@ -342,7 +398,7 @@
         </header>
 
         <div class="message-box">
-            <h2> ايه الاخبار🌟</h2>
+            <h2>ايه الاخبار 🌟</h2>
             <p>
                 عارفة إيه اللي خلاني أعمل الموقع ده؟<br>
                 <span class="highlight">إني مبسوط جداً إني اتعرفت عليكي</span> 😊<br><br>
@@ -372,7 +428,7 @@
                 <span class="highlight">شكراً إنك إديتيني فرصة</span> إننا نتكلم ونتعرف على بعض أكتر 🙏💕<br><br>
                 من أول ما عرفت إنك بتحبي سبونج بوب،<br>
                 حسيت إنك إنسانة مرحة وعندك روح جميلة 🌈<br><br>
-                وكل ما نتكلم أكتر، كل ما أتأكد إني اخترت صح  🍀
+                وكل ما نتكلم أكتر، كل ما أتأكد إني محظوظ إني قابلتك 🍀
             </p>
         </div>
 
@@ -405,52 +461,103 @@
         </div>
 
         <div class="message-box" style="background: linear-gradient(135deg, #FFE5EC 0%, #FFC3D5 100%);">
-            <h2>🎮 لعبة صيد القلوب!</h2>
+            <h2>🎲 لعبة الحظ - رسايل القلوب!</h2>
             <p style="font-size: 1.1em; margin-bottom: 20px;">
-                اصطادي القلوب قبل ما توقع! 💛<br>
-                (حركي الإصبع أو الماوس على الشاشة)
+                اختاري قلب واكتشفي الرسالة اللي جواه! 💛✨<br>
+                كل قلب فيه رسالة ليكي  
             </p>
             
-            <div id="gameArea" style="position: relative; height: 300px; background: linear-gradient(180deg, #87CEEB 0%, #4A90E2 100%); border-radius: 20px; overflow: hidden; border: 4px solid #FFD700; cursor: pointer;">
-                <div id="basket" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 3em; transition: left 0.1s;">🧺</div>
-                <div id="gameScore" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 10px 20px; border-radius: 15px; font-size: 1.3em; font-weight: bold; color: #FF6B9D;">النتيجة: 0</div>
-                <div id="gameTimer" style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 10px 20px; border-radius: 15px; font-size: 1.3em; font-weight: bold; color: #4A90E2;">⏱️ 30</div>
+            <div id="heartsContainer" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;">
+                <div class="lucky-heart" onclick="revealMessage(0)">
+                    <div class="heart-front">💛</div>
+                    <div class="heart-back"></div>
+                </div>
+                <div class="lucky-heart" onclick="revealMessage(1)">
+                    <div class="heart-front">💛</div>
+                    <div class="heart-back"></div>
+                </div>
+                <div class="lucky-heart" onclick="revealMessage(2)">
+                    <div class="heart-front">💛</div>
+                    <div class="heart-back"></div>
+                </div>
+                <div class="lucky-heart" onclick="revealMessage(3)">
+                    <div class="heart-front">💛</div>
+                    <div class="heart-back"></div>
+                </div>
+                <div class="lucky-heart" onclick="revealMessage(4)">
+                    <div class="heart-front">💛</div>
+                    <div class="heart-back"></div>
+                </div>
+                <div class="lucky-heart" onclick="revealMessage(5)">
+                    <div class="heart-front">💛</div>
+                    <div class="heart-back"></div>
+                </div>
             </div>
             
-            <button class="heart-button" onclick="startGame()" style="margin-top: 20px; background: linear-gradient(135deg, #FF6B9D 0%, #FFD700 100%);">
-                ابدأي اللعبة! 🎮
+            <div id="messageDisplay" style="display: none; margin-top: 20px; padding: 25px; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); border-radius: 20px; animation: bounceIn 0.6s;">
+                <p id="luckyMessage" style="font-size: 1.3em; color: white; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"></p>
+            </div>
+            
+            <button class="heart-button" onclick="resetGame()" style="margin-top: 20px; display: none;" id="resetBtn">
+                العبي تاني! 🔄
             </button>
-            
-            <div id="gameResult" style="display: none; margin-top: 20px; padding: 20px; background: rgba(255,215,0,0.3); border-radius: 15px;">
-                <p style="font-size: 1.4em; font-weight: bold; color: #FF6B9D;">🎉 برافو عليكي!</p>
-                <p id="finalScore" style="font-size: 1.2em; color: #2E5090; margin-top: 10px;"></p>
-            </div>
         </div>
 
         <div class="footer">
-            <p> صُنع بكل حب 💛 من ويب ديفلوبر مهتم يتعرف عليكي 😊</p>
+            <p>صُنع بكل حب 💛 من ويب ديفلوبر مهتم يتعرف عليكي 😊</p>
         </div>
     </div>
 
     <script>
-        let gameActive = false;
-        let gameScore = 0;
-        let gameTimeLeft = 30;
-        let gameInterval;
-        let timerInterval;
-        let fallingHearts = [];
+        const loveMessages = [
+            "إنتي إنسانة مميزة جداً! ✨",
+            "ابتسامتك بتنور الدنيا! 😊",
+            "محظوظ إني اتعرفت عليكي! 🍀",
+            "كل اللي حواليكي محظوظين بيكي 💕",
+            "إنتي بتخلي الحياة أجمل! 🌈",
+            "شكرا علي الفرصه اللي اديتهاني 💛"
+        ];
+        
+        let revealedCount = 0;
 
-        function showMessage() {
-            const msg = document.getElementById('hiddenMsg');
-            msg.classList.add('show');
+        function revealMessage(index) {
+            const hearts = document.querySelectorAll('.lucky-heart');
+            const heart = hearts[index];
             
-            // Create hearts animation
-            for(let i = 0; i < 20; i++) {
-                createHeart();
+            if (heart.classList.contains('revealed')) return;
+            
+            heart.classList.add('revealed');
+            heart.querySelector('.heart-back').textContent = loveMessages[index];
+            revealedCount++;
+            
+            // Show the main message
+            const messageDisplay = document.getElementById('messageDisplay');
+            const luckyMessage = document.getElementById('luckyMessage');
+            luckyMessage.textContent = loveMessages[index];
+            messageDisplay.style.display = 'block';
+            
+            // Create floating hearts
+            for(let i = 0; i < 10; i++) {
+                createFloatingHeart();
+            }
+            
+            // Show reset button if all revealed
+            if (revealedCount === 6) {
+                document.getElementById('resetBtn').style.display = 'block';
             }
         }
 
-        function createHeart() {
+        function resetGame() {
+            revealedCount = 0;
+            const hearts = document.querySelectorAll('.lucky-heart');
+            hearts.forEach(heart => {
+                heart.classList.remove('revealed');
+            });
+            document.getElementById('messageDisplay').style.display = 'none';
+            document.getElementById('resetBtn').style.display = 'none';
+        }
+
+        function createFloatingHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '💛';
             heart.style.position = 'fixed';
@@ -465,143 +572,15 @@
             setTimeout(() => heart.remove(), 3000);
         }
 
-        // Game Functions
-        function startGame() {
-            if (gameActive) return;
+        function showMessage() {
+            const msg = document.getElementById('hiddenMsg');
+            msg.classList.add('show');
             
-            gameActive = true;
-            gameScore = 0;
-            gameTimeLeft = 30;
-            fallingHearts = [];
-            
-            document.getElementById('gameScore').textContent = 'النتيجة: 0';
-            document.getElementById('gameTimer').textContent = '⏱️ 30';
-            document.getElementById('gameResult').style.display = 'none';
-            
-            // Clear any existing hearts
-            const oldHearts = document.querySelectorAll('.falling-heart');
-            oldHearts.forEach(h => h.remove());
-            
-            // Start spawning hearts
-            gameInterval = setInterval(spawnHeart, 800);
-            
-            // Start timer
-            timerInterval = setInterval(() => {
-                gameTimeLeft--;
-                document.getElementById('gameTimer').textContent = '⏱️ ' + gameTimeLeft;
-                
-                if (gameTimeLeft <= 0) {
-                    endGame();
-                }
-            }, 1000);
-        }
-
-        function spawnHeart() {
-            if (!gameActive) return;
-            
-            const gameArea = document.getElementById('gameArea');
-            const heart = document.createElement('div');
-            heart.className = 'falling-heart';
-            heart.innerHTML = '💛';
-            heart.style.position = 'absolute';
-            heart.style.left = Math.random() * (gameArea.offsetWidth - 40) + 'px';
-            heart.style.top = '-40px';
-            heart.style.fontSize = '2.5em';
-            heart.style.cursor = 'pointer';
-            heart.style.transition = 'top 3s linear';
-            heart.style.zIndex = '10';
-            
-            gameArea.appendChild(heart);
-            fallingHearts.push(heart);
-            
-            // Make it fall
-            setTimeout(() => {
-                heart.style.top = gameArea.offsetHeight + 'px';
-            }, 50);
-            
-            // Remove after falling
-            setTimeout(() => {
-                if (heart.parentNode) {
-                    heart.remove();
-                }
-            }, 3000);
-            
-            // Click to catch
-            heart.addEventListener('click', function(e) {
-                e.stopPropagation();
-                if (gameActive) {
-                    gameScore++;
-                    document.getElementById('gameScore').textContent = 'النتيجة: ' + gameScore;
-                    this.style.animation = 'bounceIn 0.3s';
-                    this.remove();
-                    
-                    // Show +1 effect
-                    const plus = document.createElement('div');
-                    plus.textContent = '+1';
-                    plus.style.position = 'absolute';
-                    plus.style.left = this.style.left;
-                    plus.style.top = this.style.top;
-                    plus.style.color = '#FFD700';
-                    plus.style.fontSize = '2em';
-                    plus.style.fontWeight = 'bold';
-                    plus.style.animation = 'rise 1s ease-out';
-                    plus.style.pointerEvents = 'none';
-                    gameArea.appendChild(plus);
-                    setTimeout(() => plus.remove(), 1000);
-                }
-            });
-        }
-
-        function endGame() {
-            gameActive = false;
-            clearInterval(gameInterval);
-            clearInterval(timerInterval);
-            
-            // Remove all falling hearts
-            const hearts = document.querySelectorAll('.falling-heart');
-            hearts.forEach(h => h.remove());
-            
-            // Show result
-            const result = document.getElementById('gameResult');
-            const finalScore = document.getElementById('finalScore');
-            
-            let message = '';
-            if (gameScore >= 30) {
-                message = 'وااااو! 🌟 إنتي محترفة! صدتي ' + gameScore + ' قلوب! 💛';
-            } else if (gameScore >= 20) {
-                message = 'رائع! 🎉 صدتي ' + gameScore + ' قلوب! ممتازة! 💕';
-            } else if (gameScore >= 10) {
-                message = 'حلو! 😊 صدتي ' + gameScore + ' قلوب! جربي تاني؟ 💛';
-            } else {
-                message = 'جربي تاني! 😄 صدتي ' + gameScore + ' قلوب! 💛';
+            // Create hearts animation
+            for(let i = 0; i < 20; i++) {
+                createFloatingHeart();
             }
-            
-            finalScore.textContent = message;
-            result.style.display = 'block';
         }
-
-        // Move basket with mouse/touch
-        const gameArea = document.getElementById('gameArea');
-        const basket = document.getElementById('basket');
-        
-        gameArea.addEventListener('mousemove', (e) => {
-            if (gameActive) {
-                const rect = gameArea.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                basket.style.left = x + 'px';
-                basket.style.transform = 'translateX(-50%)';
-            }
-        });
-        
-        gameArea.addEventListener('touchmove', (e) => {
-            if (gameActive) {
-                e.preventDefault();
-                const rect = gameArea.getBoundingClientRect();
-                const x = e.touches[0].clientX - rect.left;
-                basket.style.left = x + 'px';
-                basket.style.transform = 'translateX(-50%)';
-            }
-        });
 
         // Add more bubbles dynamically
         setInterval(() => {
